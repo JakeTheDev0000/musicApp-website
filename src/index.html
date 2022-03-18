@@ -11,7 +11,34 @@
 </head>
 <body>
     <h1 class="title">Music App</h1>
-    <button onclick="playGetLucky()">play</button>
-    <button onclick="stopSound()">stop</button>
+    <!-- <button onclick="playGetLucky()">play</button>
+    <button onclick="pauseSound()">pause</button>
+    <button onclick="stopSound()">stop</button> -->
+
+    <div class="mainMusicBox">
+        <p class="musicName">Get Lucky - Daft Punk</p>
+        <div class="musicPlayer">
+            <div class="musicPlayer__controls">
+                <button class="musicPlayer__controls__play" onclick="playSound()">
+                    Play
+                </button>
+                <button class="musicPlayer__controls__pause" onclick="pauseSound()">
+                    Pause
+                </button>
+                <button class="musicPlayer__controls__stop" onclick="stopSound()">
+                    Stop
+                </button>
+            </div>
+            <div class="musicPlayer__progress">
+                <div class="musicPlayer__progress__bar">
+                    <div class="musicPlayer__progress__bar__progress"></div>
+                </div>
+            </div>
+            <div class="musicPlayer__time">
+                <div id="musicPlayerTimeCurrent" class="musicPlayer__time__current">0:00</div>
+                <div id="musicPlayerTimeTotal" class="musicPlayer__time__total">0:00</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
