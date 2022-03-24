@@ -17,11 +17,24 @@ const songs = {
         "year": 2013,
         "genre": "Electronic",
         "duration": "3:32",
-        "cover": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/Get_Lucky_cover.jpg/220px-Get_Lucky_cover.jpg"
+        "cover": "https://www.clashmusic.com/sites/default/files/field/image/get_lucky_daft_punk_by_rothdog-d62aa4m.jpg"
     }
 }
-
+/* HERE WE WILL RANDOMIZE THE SONG, BUT FOR NOW, ITS GET LUCKY */
 var SoundAudio = new Audio(songs.song1.location);
+
+var img = new Image().src = songs.song1.cover
+
+// make the image fit the screen size
+
+
+// img.onload = function(){
+//     // nothing for now
+// }
+
+
+
+document.getElementById("cover").src = img
 var currentMusicTime = "0:00"
 
 function updateHTML(elmId, value) {
@@ -34,6 +47,17 @@ function updateHTML(elmId, value) {
     }
 }
 
+
+function playStopButtonFunction(){
+    if(isPlayingSound){
+        pauseSound()
+        updateHTML("playStop", "|>")
+    }
+    else{
+        playSound()
+        updateHTML("playStop", "||")
+    }
+}
 
 function stopSound(){
     isPlayingSound = false
