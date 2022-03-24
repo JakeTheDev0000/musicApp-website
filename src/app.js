@@ -9,10 +9,31 @@ THIS IS THE WORST CODE I HAVE EVER WRITTEN, im sorry
 
 isPlayingSound = false
 
-var SoundAudio = new Audio('audio/getLucky.mp3');
+const songs = {
+    "song1": {
+        "location": "audio/getLucky.mp3",
+        "name": "Get Lucky",
+        "artist": "Daft Punk",
+        "year": 2013,
+        "genre": "Electronic",
+        "duration": "3:32",
+        "cover": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/Get_Lucky_cover.jpg/220px-Get_Lucky_cover.jpg"
+    }
+}
 
-const musicPlayerTimeCurrent = document.getElementById('musicPlayerTimeCurrent').innerHTML
-const musicPlayerTimeTotal = document.getElementById('musicPlayerTimeTotal').innerHTML
+var SoundAudio = new Audio(songs.song1.location);
+var currentMusicTime = "0:00"
+
+function updateHTML(elmId, value) {
+    var elem = document.getElementById(elmId);
+    if(typeof elem !== 'undefined' && elem !== null) {
+      elem.innerHTML = value;
+    }
+    else{
+        console.log("element not found")
+    }
+}
+
 
 function stopSound(){
     isPlayingSound = false
@@ -23,13 +44,14 @@ function pauseSound(){
     isPlayingSound = false
     SoundAudio.pause()
 }
-/* GET LUCKY */  
+
 function playSound(){
     console.log(isPlayingSound)
     if(isPlayingSound){
         return
     }
     isPlayingSound = true
+    currentMusicTime = "0:00"
     
     SoundAudio.play();
     SoundAudio.onended = function(){
@@ -39,8 +61,12 @@ function playSound(){
 
 musicPlayerTimeCurrent.innerHTML = SoundAudio.currentTime
 setInterval(function(){
-    console.log("interval")
-    musicPlayerTimeCurrent.innerHTML = SoundAudio.currentTime
-},1000)
+    currentMusicTime = "seconds : " + String(SoundAudio.currentTime.toFixed()) + " / " + String(SoundAudio.duration.toFixed())
+
+    console.log(SoundAudio.currentTime + " " + SoundAudio.duration)     
+    updateHTML('musicPlayerTimeCurrent', currentMusicTime)              
+    updateHTML('musicPlayerTimeTotal', "duration : " + songs.song1.duration)            
+    //songs.song1.duration
+},500)
 
 

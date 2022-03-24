@@ -7,10 +7,11 @@
     <title>Music App</title>
     <!--add style.css to htrml-->
     <link rel="stylesheet" href="style.css">
-    <script src="app.js"></script>
+    
 </head>
 <body>
     <h1 class="title">Music App</h1>
+    <h3 class="title-small" >Beta 0.3</h3>
     <!-- <button onclick="playGetLucky()">play</button>
     <button onclick="pauseSound()">pause</button>
     <button onclick="stopSound()">stop</button> -->
@@ -35,10 +36,11 @@
                 </div>
             </div>
             <div class="musicPlayer__time">
-                <div id="musicPlayerTimeCurrent" class="musicPlayer__time__current">0:00</div>
-                <div id="musicPlayerTimeTotal" class="musicPlayer__time__total">0:00</div>
+                <p id="musicPlayerTimeCurrent">0:00</p>
+                <p id="musicPlayerTimeTotal">0:00</p>
             </div>
         </div>
     </div>
+    <script src="app.js"></script>
 </body>
 </html>
