@@ -7,6 +7,16 @@ audio.play();
 THIS IS THE WORST CODE I HAVE EVER WRITTEN, im sorry
 */
 
+/*
+//      todo: make the play/pause button one that toggles between play and pause
+//      todo: turn the seconds into MM:SS
+        todo: make faster/slower buttons
+        todo: make a loop button
+        todo: make a random/shuffle button
+        todo: make a volume slider
+        todo: make a mute button
+*/
+
 isPlayingSound = false
 
 const songs = {
@@ -16,7 +26,7 @@ const songs = {
         "artist": "Daft Punk",
         "year": 2013,
         "genre": "Electronic",
-        "duration": "3:32",
+        "duration": "4:08",
         "cover": "https://www.clashmusic.com/sites/default/files/field/image/get_lucky_daft_punk_by_rothdog-d62aa4m.jpg"
     }
 }
@@ -59,6 +69,17 @@ function playStopButtonFunction(){
     }
 }
 
+function loopSound(){
+    if(isPlayingSound){
+        SoundAudio.loop = true
+        updateHTML("loopBtn", "O")
+    }
+    else{
+        SoundAudio.loop = false
+        updateHTML("loopBtn", "o")
+    }
+}
+
 function stopSound(){
     isPlayingSound = false
     SoundAudio.pause()
@@ -80,12 +101,14 @@ function playSound(){
     SoundAudio.play();
     SoundAudio.onended = function(){
         isPlayingSound = false
+        updateHTML("playStop", "|>")
     }
 }
 
 musicPlayerTimeCurrent.innerHTML = SoundAudio.currentTime
 setInterval(function(){
-    currentMusicTime = "seconds : " + String(SoundAudio.currentTime.toFixed()) + " / " + String(SoundAudio.duration.toFixed())
+    
+    currentMusicTime = "" + Math.floor(SoundAudio.currentTime / 60) + ":" + (Math.floor(SoundAudio.currentTime % 60)) + "/" + Math.floor(SoundAudio.duration / 60) + ":" + (Math.floor(SoundAudio.duration % 60))
 
     console.log(SoundAudio.currentTime + " " + SoundAudio.duration)     
     updateHTML('musicPlayerTimeCurrent', currentMusicTime)              
